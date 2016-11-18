@@ -729,6 +729,12 @@ if (BUILD_PYTHON)
 
 endif (BUILD_PYTHON)
 
+# fuzz tests: tests/fuzz
+option(FUZZ_TEST "Enable building fuzzers and regression testing with libFuzzer" ON)
+if (FUZZ_TEST)
+  add_subdirectory(src/tests/fuzz)
+endif (FUZZ_TEST)
+
 find_program(RUBY_EXE "ruby")
 if (RUBY_EXE AND BUILD_RUBY)
   set (rb_root "${pn_test_root}/ruby")
